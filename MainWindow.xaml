@@ -1,0 +1,70 @@
+﻿<Window x:Class="BTD6_Mod_Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:UserControls="clr-namespace:BTD6_Mod_Manager.UserControls"
+        xmlns:local="clr-namespace:BTD6_Mod_Manager"
+        mc:Ignorable="d"
+        Title="BTD6 Mod Manager" Height="650" Width="800" WindowState="Maximized" Loaded="Main_Loaded" Activated="Main_Activated" Closing="Main_Closing" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ToolBarPanel DockPanel.Dock="Top">
+            <ToolBar ToolBarTray.IsLocked="True" Background="#FF191919" Loaded="ToolBar_Loaded">
+
+                <xctk:DropDownButton Visibility="Collapsed" x:Name="Testing_Button" Background="#FF191919" Content="Testing" Foreground="White" FontSize="18" DropDownContentBackground="Black">
+                    <xctk:DropDownButton.DropDownContent>
+                        <Menu>
+                            <Menu.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </Menu.ItemsPanel>
+                        </Menu>
+                    </xctk:DropDownButton.DropDownContent>
+                </xctk:DropDownButton>
+                <Button x:Name="Launch_Button" Content="Launch" Background="#FF5BC900" Width="100" Height="30" BorderBrush="Black" FontSize="16" Click="Launch_Button_Click" Foreground="White"/>
+                <Separator Margin="8,0,8,0" Background="#FF383838"/>
+                <TextBlock x:Name="Version_TextBlock" Text="Version" Foreground="#FF8D8D8D" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Separator Margin="8,0,8,0" Background="#FF383838"/>
+                <TextBlock x:Name="Timer_TextBlock" Text="Time to inject: " Visibility="Collapsed" Foreground="#FF8D8D8D" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </ToolBar>
+        </ToolBarPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="203*"/>
+                <ColumnDefinition Width="589*"/>
+            </Grid.ColumnDefinitions>
+            <UserControls:Mods_UserControl Grid.ColumnSpan="2"/>
+        </Grid>
+
+        <Grid Grid.Row="2" >
+            <Grid Background="{StaticResource BrushBackgroundL}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="CollapseConsole_Button" Grid.Row="0" Content="Show Console" Click="ConsoleColapsed"/>
+                <RichTextBox x:Name="OutputLog" Grid.Row="1" Visibility="Collapsed" Background="#FF272727" Foreground="White" FontSize="16" FontFamily="Consolas" VerticalScrollBarVisibility="Auto" BorderThickness="0.5,0.5,0,0" IsReadOnly="True" MinHeight="100"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
