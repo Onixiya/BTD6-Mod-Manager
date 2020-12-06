@@ -173,6 +173,10 @@ namespace BTD6_Mod_Manager
 
             Launcher.Launch();
         }
+        private void NoModsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Launcher.NoModsStart();
+        }
         private void Log_MessageLogged(object sender, Log.LogEvents e)
         {
             if (e.Output == OutputType.MsgBox)

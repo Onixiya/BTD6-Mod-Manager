@@ -117,5 +117,11 @@ namespace BTD6_Mod_Manager.Classes
             if (modsInjected)
                 Log.Output("Mods Injected...");
         }
+        public static void NoModsStart()
+        {
+            var gameInfo = GameInfo.GetGame(SessionData.CurrentGame);
+            if (!BTD_Backend.Natives.Utility.IsProgramRunning(gameInfo.ProcName, out var btd6Proc))
+                Process.Start("steam://rungameid/" + gameInfo.SteamID);
+        }
     }
 }
