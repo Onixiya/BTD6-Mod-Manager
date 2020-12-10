@@ -30,13 +30,15 @@ namespace BTD6_Mod_Manager.Classes
             set { instance = value; }
         }
 
-        public string settingsFileName { get; set; } = "settings.json";
+        public string SettingsFileName { get; set; } = "settings.json";
         public string MainSettingsDir { get; set; } = Environment.CurrentDirectory + "\\";
         public bool ConsoleFlash { get; set; } = true;
         public GameType LastGame { get; set; } = GameType.BTD6;
         public List<string> LastUsedMods { get; set; } = new List<string>();
+        public List<string> NoLoadMods { get; set; } = new List<string>();
+        //public string NoModsDir { get; set; }
         public string BTD6_ModsDir { get; set; }
-        public bool AutoStart { get; set; } = false;
+        //public bool AutoStart { get; set; } = false;
         
         public TempSettings()
         {
@@ -46,13 +48,13 @@ namespace BTD6_Mod_Manager.Classes
 
         public TempSettings LoadSettings()
         {
-            if (!File.Exists(Instance.MainSettingsDir + "\\" + Instance.settingsFileName))
+            if (!File.Exists(Instance.MainSettingsDir + "\\" + Instance.SettingsFileName))
             {
                 CreateNewSettings();
                 return this;
             }
 
-            string json = File.ReadAllText(MainSettingsDir + "\\" + settingsFileName);
+            string json = File.ReadAllText(MainSettingsDir + "\\" + SettingsFileName);
             if (!Guard.IsJsonValid(json) || json.Length <= 0)
             {
                 Log.Output("Settings file has invalid json, generating a new settings file.");
@@ -73,7 +75,7 @@ namespace BTD6_Mod_Manager.Classes
             if (!Directory.Exists(MainSettingsDir))
                 Directory.CreateDirectory(MainSettingsDir);
 
-            string path = MainSettingsDir + "\\" + settingsFileName;
+            string path = MainSettingsDir + "\\" + SettingsFileName;
             try
             {
                 StreamWriter serialize = new StreamWriter(path, false);

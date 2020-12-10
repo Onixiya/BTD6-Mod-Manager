@@ -117,15 +117,6 @@
     <Compile Include="UserControls\Mods_UserControl.xaml.cs">
       <DependentUpon>Mods_UserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\DevManager.xaml.cs">
-      <DependentUpon>DevManager.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\RenameWindow.xaml.cs">
-      <DependentUpon>RenameWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\WebBrowser.xaml.cs">
-      <DependentUpon>WebBrowser.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,18 +144,6 @@
     <Page Include="UserControls\Mods_UserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\DevManager.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\RenameWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\WebBrowser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -208,15 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\BTD6 loaded.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\BTD6 not loaded.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\discord logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\nexusmods logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -45,27 +45,10 @@
                             <VirtualizingStackPanel Orientation="Vertical"/>
                         </ItemsPanelTemplate>
                     </Menu.ItemsPanel>
-                    
-                    
-                    <MenuItem x:Name="RenameMod_Button" Header="Rename" FontSize="16" BorderThickness="0" Click="RenameMod_Button_Click"/>
                     <MenuItem x:Name="DeleteMod_Button" Header="Delete" FontSize="16" BorderThickness="0" Click="DeleteMod_Button_Click"/>
-                    <MenuItem x:Name="OpenDevMgr_Button" Header="Open Dev Manager" FontSize="16" BorderThickness="0" Click="OpenDevMgr_Button_Click"/>
                     <MenuItem x:Name="OpenMod_Button" Header="Open Mod Directory" FontSize="16" BorderThickness="0" Click="OpenMod_Button_Click"/>
-                    <MenuItem x:Name="CopyToClipboard_Button" Header="Copy to Clipboard" FontSize="16" BorderThickness="0" Click="CopyToClipboard_Button_Click"/>
-                    
-                    <!--<MenuItem x:Name="Settings_Button" Header="Settings" FontSize="16" Foreground="White" Background="#FF191919" BorderThickness="0" Click="Settings_Button_Click"/>
-                    <MenuItem x:Name="OpenSettingsDir_Button" Header="Open Settings Dir" FontSize="16"  Foreground="White" Background="#FF191919" BorderThickness="0" Click="OpenSettingsDir_Button_Click"/>-->
                 </Menu>
             </xctk:DropDownButton.DropDownContent>
         </xctk:DropDownButton>
-        
-        <!-- Idk what this plans to have so idk what to theme it to... -->
-        <!--<xctk:SplitButton Grid.Column="5" FontSize="17" Content="  More  " Background="#FF00B7E0" Foreground="White" Click="SplitButton_Click">
-            <xctk:SplitButton.DropDownContent>
-                <xctk:ButtonChrome MouseDown="ButtonChrome_MouseDown"></xctk:ButtonChrome>
-            </xctk:SplitButton.DropDownContent>
-        </xctk:SplitButton>-->
-        
-        
     </Grid>
 </UserControl>

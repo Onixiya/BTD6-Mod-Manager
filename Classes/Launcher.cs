@@ -1,5 +1,7 @@
 ﻿using BTD_Backend;
 using BTD_Backend.Game;
+using Microsoft.Win32;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
@@ -61,10 +63,12 @@ namespace BTD6_Mod_Manager.Classes
             var gameInfo = GameInfo.GetGame(SessionData.CurrentGame);
 
             if (!BTD_Backend.Natives.Utility.IsProgramRunning(gameInfo.ProcName, out btd6Proc))
+            {
+                Log.Output("Starting BTD6");
                 Process.Start("steam://rungameid/" + gameInfo.SteamID);
+            }
             else
                 injectWaitTime = 0;
-
             while (!BTD_Backend.Natives.Utility.IsProgramRunning(gameInfo.ProcName, out btd6Proc))
                 Thread.Sleep(1000);
 
@@ -102,7 +106,7 @@ namespace BTD6_Mod_Manager.Classes
         private void InjectMods(Process btd6Proc)
         {
             bool modsInjected = false;
-            Log.Output("Injecting mods...");
+            Log.Output("Trying to Inject mods");
             foreach (var modPath in SessionData.LoadedMods)
             {
                 if (!File.Exists(modPath))
@@ -115,13 +119,21 @@ namespace BTD6_Mod_Manager.Classes
             }
 
             if (modsInjected)
-                Log.Output("Mods Injected...");
+                Log.Output("Mods Injected (apparently)");
         }
         public static void NoModsStart()
         {
             var gameInfo = GameInfo.GetGame(SessionData.CurrentGame);
             if (!BTD_Backend.Natives.Utility.IsProgramRunning(gameInfo.ProcName, out var btd6Proc))
-                Process.Start("steam://rungameid/" + gameInfo.SteamID);
+            {
+                Process.Start(Environment.SpecialFolder.ProgramFilesX86+"\\Steam.exe");
+                Thread.Sleep(10000);
+                Process.Start(TempSettings.Instance.BTD6_ModsDir + "..\\BloonsTD6.exe --no-mods");
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
