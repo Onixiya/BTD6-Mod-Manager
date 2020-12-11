@@ -74,6 +74,7 @@ namespace BTD6_Mod_Manager
             var game = GameInfo.GetGame(SessionData.CurrentGame);
             string btd6ExePath = game.GameDir + "\\" + game.EXEName;
             FileInfo btd6File = new FileInfo(btd6ExePath);
+            Autostart();
 
             BgThread.AddToQueue(() =>
             {
@@ -163,7 +164,7 @@ namespace BTD6_Mod_Manager
             }
         }
         //startng herere ====================================================
-        private void Launch_Button_Click(object sender, RoutedEventArgs e)
+        public void Launch_Button_Click(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(TempSettings.Instance.GetModsDir(SessionData.CurrentGame)))
             {
@@ -233,6 +234,28 @@ namespace BTD6_Mod_Manager
         private void Window_Closed(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+        private void Autostart()
+        {
+            if(TempSettings.Instance.AutoStart==true)
+            {
+                Launcher.Launch();
+            }
+            else
+            {
+                return;
+            }
+        }
+        private void NoModsAutostart()
+        {
+            if (TempSettings.Instance.NoModsAutoStart == true)
+            {
+                Launcher.NoModsStart();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

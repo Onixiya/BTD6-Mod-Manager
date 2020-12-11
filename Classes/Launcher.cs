@@ -126,13 +126,9 @@ namespace BTD6_Mod_Manager.Classes
             var gameInfo = GameInfo.GetGame(SessionData.CurrentGame);
             if (!BTD_Backend.Natives.Utility.IsProgramRunning(gameInfo.ProcName, out var btd6Proc))
             {
-                Process.Start(Environment.SpecialFolder.ProgramFilesX86+"\\Steam.exe");
+                Process.Start(Environment.SpecialFolder.ProgramFilesX86 + "\\Steam.exe");
                 Thread.Sleep(10000);
                 Process.Start(TempSettings.Instance.BTD6_ModsDir + "..\\BloonsTD6.exe --no-mods");
-            }
-            else
-            {
-                return;
             }
         }
     }

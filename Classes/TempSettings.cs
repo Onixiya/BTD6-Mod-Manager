@@ -38,7 +38,8 @@ namespace BTD6_Mod_Manager.Classes
         public List<string> NoLoadMods { get; set; } = new List<string>();
         //public string NoModsDir { get; set; }
         public string BTD6_ModsDir { get; set; }
-        //public bool AutoStart { get; set; } = false;
+        public bool AutoStart { get; set; } = false;
+        public bool NoModsAutoStart { get; set; } = false;
         
         public TempSettings()
         {
